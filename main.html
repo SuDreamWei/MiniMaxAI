@@ -99,7 +99,9 @@
         <div class="error-message">AI大模型加载失败，请重新尝试</div>
         <div class="progress-bar"></div>
         <button class="retry-button">重新尝试</button>
-        <iframe id="minimaxIframe" src="https://www.minimax01.com/embed"></iframe>
+        <iframe id="minimaxIframe"
+            src="https://www.minimax01.com/embed">
+        </iframe>
     </div>
     <script>
         const container = document.querySelector('.iframe-container');
@@ -191,6 +193,19 @@
                 }, delay);
             };
         }
+
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) {
+                e.preventDefault();
+            }
+        });
 
         window.addEventListener('load', adjustIframeRatio);
         window.addEventListener('resize', debounce(adjustIframeRatio, 200));
